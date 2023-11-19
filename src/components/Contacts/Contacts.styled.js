@@ -6,17 +6,23 @@ export const StyledList = styled.ul`
 
 export const StyledItem = styled.li`
   margin-bottom: 10px;
-  min-width: 273px;
+  min-width: 300px;
 `;
 
 export const StyledText = styled.p`
   display: inline-block;
-  width: 200px;
+  width: 250px;
+  font-size: 18px;
 `;
 
 export const StyledButton = styled.button`
   margin-left: auto;
-  padding: 3px 6px;
+  padding: 4px 8px;
   display: inline-block;
-  border-radius: 5px;
+  border-radius: 3px;
+  font-size: 16px;
+  &:hover {
+    background-color: #e74c3c;
+    color: #ffffff;
+  }
 `;

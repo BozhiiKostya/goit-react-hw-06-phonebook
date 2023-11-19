@@ -18,11 +18,13 @@ export const StyledError = styled(ErrorMessage)`
 `;
 export const StyledField = styled(Field)`
   width: 250px;
-  padding: 4px 10px;
-  border-radius: 5px;
+  padding: 6px 12px;
+  border-radius: 3px;
+  font-size: 18px;
 `;
 export const StyledButton = styled.button`
   width: 273px;
   padding: 6px 30px;
-  border-radius: 10px;
+  border-radius: 3px;
+  font-size: 18px;
 `;

@@ -7,8 +7,9 @@ export const Styledlabel = styled.label`
 `;
 
 export const StyledInput = styled.input`
-  width: 250px;
-  padding: 4px 10px;
+  width: 300px;
+  padding: 6px 12px;
   margin-bottom: 10px;
-  border-radius: 5px;
+  border-radius: 3px;
+  font-size: 18px;
 `;

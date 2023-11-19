@@ -1,23 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { createContact, removeContact } from 'redux/reducer/contactsSlice';
+import { filterContact } from 'redux/reducer/filterSlice';
 import { Layout } from './Layout.styled';
 import { ContactsForm } from './ContactsForm/ContactsForm';
 import { Contacts } from './Contacts/Contacts';
 import { Filter } from './Filter/Filter';
 
 export const App = () => {
-  const [contacts, setContacts] = useState([]);
-  const [filter, setFilter] = useState('');
-
-  useEffect(() => {
-    const savedContacts = localStorage.getItem('contacts');
-    if (savedContacts !== null) {
-      setContacts(JSON.parse(savedContacts));
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
+  const contacts = useSelector(state => state.contacts.value);
+  const filter = useSelector(state => state.filters.value);
+  const dispatch = useDispatch();
 
   const addContact = newContact => {
     if (
@@ -28,7 +20,7 @@ export const App = () => {
       alert(`${newContact.name} is already in contacts.`);
       return;
     }
-    setContacts(prevState => [...prevState, newContact]);
+    dispatch(createContact(newContact));
   };
 
   const getFilteredContactsList = () => {
@@ -36,15 +28,12 @@ export const App = () => {
       name.toLowerCase().includes(filter.toLowerCase())
     );
   };
-
-  const deleteContact = cardId => {
-    setContacts(prevState =>
-      prevState.filter(contact => contact.id !== cardId)
-    );
+  const filterContacts = value => {
+    dispatch(filterContact(value));
   };
 
-  const filterContacts = value => {
-    setFilter(value);
+  const deleteContact = cardId => {
+    dispatch(removeContact(cardId));
   };
 
   return (
