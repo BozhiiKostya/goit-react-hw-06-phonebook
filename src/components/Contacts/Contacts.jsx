@@ -12,23 +12,17 @@ export const Contacts = () => {
   const filter = useSelector(state => state.filters.value);
   const dispatch = useDispatch();
 
-  const getFilteredContactsList = () => {
-    return contacts.filter(({ name }) =>
-      name.toLowerCase().includes(filter.toLowerCase())
-    );
-  };
-
-  const deleteContact = cardId => {
-    dispatch(removeContact(cardId));
-  };
+  const getFilteredContactsList = contacts.filter(({ name }) =>
+    name.toLowerCase().includes(filter.toLowerCase())
+  );
 
   return (
     <StyledList>
-      {getFilteredContactsList().map(({ id, name, number }) => {
+      {getFilteredContactsList.map(({ id, name, number }) => {
         return (
           <StyledItem key={id}>
             <StyledText>{name + ': ' + number}</StyledText>
-            <StyledButton onClick={() => deleteContact(id)}>
+            <StyledButton onClick={() => dispatch(removeContact(id))}>
               Delete
             </StyledButton>
           </StyledItem>
